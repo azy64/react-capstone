@@ -4,12 +4,12 @@ import thunk from 'redux-thunk';
 import countriesReducer, { fetchCountries } from './countries/countriesReducer';
 import continentsReducer, { fetchContinents } from './continents/continentsReducer';
 
-const rootReducer = combineReducers({
+const reducer = combineReducers({
   countriesReducer,
   continentsReducer,
 });
 const store = createStore(
-  rootReducer,
+  reducer,
   applyMiddleware(thunk, logger),
 );
 
