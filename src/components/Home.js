@@ -4,12 +4,17 @@ import { NavLink } from 'react-router-dom';
 import { BsArrowRightCircle } from 'react-icons/bs';
 import {
   Ul,
-  Img,
+  HomeImg,
+  Box,
+  HomeLi,
   Details,
   Name,
   Deaths,
   Seperator,
   Button,
+  ImgFluid,
+  HeaderHome,
+  HeaderLi,
 } from '../style/Componentstyle';
 import SearchForm from './SearchForm';
 import { getSingleContinent } from '../redux/continents/continentsActions';
@@ -34,28 +39,31 @@ const Home = () => {
     <>
       <SearchForm setContinent={setSearchContinent} />
       <Ul>
-        <homeLi>
-          <Img src={world} alt="World" data-testid="img" />
-          <Details>
-            <Name data-testid="continent">
-              The whole world
-            </Name>
-            <Deaths>
-              7231690 deaths
-            </Deaths>
-          </Details>
-        </homeLi>
+        <HeaderHome>
+          <HeaderLi>
+            <HomeImg src={world} alt="World" data-testid="img" />
+            <Details>
+              <Name data-testid="continent">
+                The whole world
+              </Name>
+              <Deaths>
+                7231690 deaths
+              </Deaths>
+            </Details>
+          </HeaderLi>
+        </HeaderHome>
         <Seperator>States By Continent</Seperator>
-        {
+        <Box>
+          {
           searchContinent === ''
             ? continents.map((continent) => continentsShape.map((image) => (
               image.search(continent.name) !== -1
                 ? (
                   <Fragment key={continent.name}>
-                    <homeLi>
+                    <HomeLi>
                       <NavLink to="/details" onClick={() => dispatch(getSingleContinent(continent))}>
                         <BsArrowRightCircle />
-                        <Img src={image} alt={continent.name} />
+                        <ImgFluid src={image} alt={continent.name} />
                         <Details>
                           <Name>
                             {continent.name}
@@ -67,7 +75,7 @@ const Home = () => {
                           </Deaths>
                         </Details>
                       </NavLink>
-                    </homeLi>
+                    </HomeLi>
                   </Fragment>
                 )
                 : null
@@ -77,20 +85,19 @@ const Home = () => {
                 return (
                   <>
                     <Button type="button" onClick={clearFilter} key="filter">
-                      Go back ==
-                      {'>'}
+                      <BsArrowRightCircle />
                     </Button>
                     {
                       continentsShape.map((image) => (
                         image.search(continent.name) !== -1
                           ? (
-                            <homeLi key={continent.name}>
+                            <HomeLi key={continent.name}>
                               <NavLink
                                 to="/details"
                                 onClick={() => dispatch(getSingleContinent(continent))}
                               >
                                 <BsArrowRightCircle />
-                                <Img src={image} alt={continent.name} />
+                                <ImgFluid src={image} alt={continent.name} />
                                 <Details>
                                   <Name>
                                     {continent.name}
@@ -102,7 +109,7 @@ const Home = () => {
                                   </Deaths>
                                 </Details>
                               </NavLink>
-                            </homeLi>
+                            </HomeLi>
                           )
                           : null
                       ))
@@ -113,6 +120,7 @@ const Home = () => {
               return null;
             })
             }
+        </Box>
       </Ul>
     </>
   );

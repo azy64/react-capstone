@@ -8,13 +8,16 @@ We selected an API that provides numeric data about a topic that we like and the
   
 - one page for the item details; in the example, the detail page for Czech Republic cities with number of views.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./screen1.png)
+![screenshot](./screen2.png)
+![screenshot](./screen3.png)
 
 ## Built With
 
 - React
 - React-redux
 - React-router-dom
+- <a href="https://documenter.getpostman.com/view/10831675/SzYZ1eNY">Covit-19 Data API</a>
 
 ## Live Demo
 

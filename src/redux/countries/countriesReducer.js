@@ -42,13 +42,16 @@ export const fetchCountries = () => async (dispatch) => {
   await fetch('https://disease.sh/v3/covid-19/countries')
     .then((res) => res.json())
     .then((countries) => {
-      const selectedCountries = countries.map((country) => ({
-        id: parseInt(country.countryInfo["_id"], 10),
-        name: country.country,
-        flag: country.countryInfo.flag,
-        deaths: country.deaths,
-        continent: country.continent,
-      }));
+      const selectedCountries = countries.map((country) => {
+        const { _id } = country.countryInfo;
+        return {
+          id: parseInt(_id, 10),
+          name: country.country,
+          flag: country.countryInfo.flag,
+          deaths: country.deaths,
+          continent: country.continent,
+        };
+      });
       dispatch(fetchingCountriesSucceed(selectedCountries));
     })
     .catch((err) => dispatch(fetchingCountriesFaild(err)));
