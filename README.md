@@ -21,7 +21,7 @@ We selected an API that provides numeric data about a topic that we like and the
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://619e92c7f14e93a7ecac8a2d--romantic-euclid-b0bb8f.netlify.app/)
 Additional description about the project and its features.
 ## Available Scripts
 
